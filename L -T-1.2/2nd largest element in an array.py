@@ -1,18 +1,17 @@
 
-arr = list(map(int, input("Enter numbers separated by space: ").split()))
+
+numbers = list(map(int, input("Write numbers with space: ").split()))
 
 
-max_value = arr[0]
-for num in arr:
-    if num > max_value:
-        max_value = num
+biggest = numbers[0]
+for n in numbers:
+    if n > biggest:
+        biggest = n
 
-second_max = float('-inf')
-for num in arr:
-    if num != max_value and num > second_max:
-        second_max = num
 
-if second_max == float('-inf'):
-    print("No second largest element.")
-else:
-    print("Second largest element is:", second_max)
+second_biggest = numbers[0]
+for n in numbers:
+    if n != biggest and n > second_biggest:
+        second_biggest = n
+
+print("Second biggest number is:", second_biggest)
