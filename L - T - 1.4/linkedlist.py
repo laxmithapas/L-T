@@ -32,6 +32,23 @@ class LinkedList:
             temp = self.head
             for i in range(position - 1):
                 temp = temp.next
+    def traversal(self):
+        if self.head == None:
+            print("List is empty")
+        else:
+            temp = self.head
+            while temp:
+                print(temp.data)
+                temp = temp.next
+    def Delete(self):
+        if self.head == None:
+            print("List is empty")
+        elif self.head.next == None:
+            self.head = None
+        else:
+            self.head = self.head.next
+    
+        
 
     def printlist(self):
         temp = self.head
