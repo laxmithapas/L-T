@@ -19,7 +19,7 @@ class LinkedList:
             last.next = new_node
 
     def printlist(self, limit=20):
-        """Prints list (limit avoids infinite printing if loop exists)."""
+        
         temp = self.head
         count = 0
         while temp and count < limit:
@@ -35,9 +35,9 @@ class LinkedList:
             slow = slow.next
             fast = fast.next.next
             if slow == fast:
-                print("Loop detected ✅")
+                print("Loop detected")
                 return True
-        print("No loop detected ❌")
+        print("No loop detected")
         return False
 
 

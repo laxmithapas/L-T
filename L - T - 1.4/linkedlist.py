@@ -53,7 +53,7 @@ class LinkedList:
                 print(temp.data)
                 temp = temp.next
 
-    def Delete(self):  # delete from beginning
+    def Delete(self):  
         if self.head is None:
             print("List is empty")
         else:
@@ -129,4 +129,3 @@ llist.insertbegg(2)
 llist.insertbegg(4)
 llist.insertbegg(5)
 llist.printlist()   
-
