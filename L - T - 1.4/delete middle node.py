@@ -1,83 +1,59 @@
 class Node:
-    def __init__(self, d):
+    def _init_(self, d):
         self.data = d
         self.next = None
 
 
-class LinkedList:
-    def __init__(self):
+class CircularLinkedList:
+    def _init_(self):
         self.head = None
-    
+
+    # Insert at beginning
+    def insertbegg(self, d):
+        new_node = Node(d)
+        if self.head is None:
+            self.head = new_node
+            new_node.next = self.head
+        else:
+            temp = self.head
+            while temp.next != self.head:
+                temp = temp.next
+            new_node.next = self.head
+            temp.next = new_node
+            self.head = new_node
+
+    # Insert at end
     def insertend(self, d):
         new_node = Node(d)
         if self.head is None:
             self.head = new_node
+            new_node.next = self.head
         else:
-            last = self.head
-            while last.next:
-                last = last.next
-            last.next = new_node
+            temp = self.head
+            while temp.next != self.head:
+                temp = temp.next
+            temp.next = new_node
+            new_node.next = self.head
 
+    # Print the list
     def printlist(self):
-        temp = self.head
-        while temp:
-            print(temp.data, end=" ")
-            temp = temp.next
-        print()
-
-    def Deleteatany(self, position):
         if self.head is None:
             print("List is empty")
             return
-        
-        if position == 0:  # delete head
-            self.head = self.head.next
-            return
-        
         temp = self.head
-        for i in range(position - 1):
-            if temp is None or temp.next is None:
-                print("Position out of range")
-                return
+        while True:
+            print(temp.data, end=" ")
             temp = temp.next
-        
-        if temp.next is None:
-            print("Position out of range")
-            return
-        
-        temp.next = temp.next.next
-
-    def deletemiddle(self):
-        
-        temp = self.head
-        length = 0
-        while temp:
-            length += 1
-            temp = temp.next
-        
-        if length == 0:
-            print("List is empty")
-            return
-        
-        middle = length // 2   
-        self.Deleteatany(middle)
-        print(f"Deleted middle node at position {middle}")
+            if temp == self.head:
+                break
+        print()
 
 
 
-llist = LinkedList()
+clist = CircularLinkedList()
+clist.insertend(10)
+clist.insertend(20)
+clist.insertbegg(5)
+clist.insertend(30)
 
-
-n = int(input("Enter number of nodes: "))
-for i in range(n):
-    data = int(input(f"Enter data for node {i+1}: "))
-    llist.insertend(data)
-
-print("Original Linked List:", end=" ")
-llist.printlist()
-
-
-llist.deletemiddle()
-
-print("After deleting middle node:", end=" ")
-llist.printlist()
+clist.printlist()   
