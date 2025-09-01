@@ -1,11 +1,11 @@
 class Node:
-    def _init_(self, d):
+    def __init__(self, d):
         self.data = d
         self.next = None
 
 
 class CircularLinkedList:
-    def _init_(self):
+    def __init__(self):
         self.head = None
 
     # Insert at beginning
