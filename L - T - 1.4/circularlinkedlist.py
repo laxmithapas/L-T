@@ -24,7 +24,7 @@ class CircularLinkedList:
 
     
     def insertend(self, d):
-        new_node = Node(d)
+        new_node =Node(d)
         if self.head is None:
             self.head = new_node
             new_node.next = self.head
