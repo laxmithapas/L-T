@@ -1,25 +1,32 @@
-def subset_sum_backtrack(arr, target):
-    result = []
+# Python implementation for subset sum
+# problem using recursion
+def isSubsetSumRec(arr, n, sum):
+  
+    # Base Cases
+    if sum == 0:
+        return True 
+    if n == 0:
+        return False
 
-    def backtrack(start, path, current_sum):
-        if current_sum == target:
-            result.append(path[:])
-            return
-        if current_sum > target:
-            return
+    # If the last element is greater
+    # than the sum, ignore it
+    if arr[n - 1] > sum:
+        return isSubsetSumRec(arr, n - 1, sum)
 
-        for i in range(start, len(arr)):
-            path.append(arr[i])
-            backtrack(i + 1, path, current_sum + arr[i])
-            path.pop()
+    # Check if sum can be obtained by including
+    # or excluding the last element
+    return (isSubsetSumRec(arr, n - 1, sum) or 
+            isSubsetSumRec(arr, n - 1, sum - arr[n - 1]))
 
-    backtrack(0, [], 0)
-    return result
+def isSubsetSum(arr, sum):
+    return isSubsetSumRec(arr, len(arr), sum)
 
-# Example usage
-arr = [3, 34, 4, 12, 5, 2]
-target = 9
-solutions = subset_sum_backtrack(arr, target)
-for sol in solutions:
-    print(sol)
+if __name__ == "__main__":
+  
+    arr = [3, 34, 4, 12, 5, 2]
+    sum = 9
 
+    if isSubsetSum(arr, sum):
+        print("True")
+    else:
+        print("False")
